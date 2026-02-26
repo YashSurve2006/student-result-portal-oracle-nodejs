@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Student Result Portal</title>
+
+    <!-- ✅ CORRECT CSS PATH -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- ===== NAVBAR ===== -->
+    <nav class="navbar">
+        <div class="nav-title">🎓 Student Result Portal</div>
+        <div class="nav-links">
+            <a href="/add-students.html">Add Student</a>
+            <a href="/add-marks.html">Add Marks</a>
+            <a href="/view-result.html">View Result</a>
+        </div>
+    </nav>
+
+    <!-- ===== MAIN CONTAINER ===== -->
+    <div class="container">
+
+        <!-- ===== PAGE HEADER ===== -->
+        <div class="page-header">
+            <h1>Welcome to Student Result Portal</h1>
+            <p>Node.js + SQL PLUS</p>
+        </div>
+
+        <!-- ===== INTRO CARD ===== -->
+        <div class="card">
+            <h2>📘 Project Overview</h2>
+            <p>
+                This system is designed to manage student records and examination results
+                using Node.js as backend and Oracle XE as the database.
+            </p>
+            <p>
+                It allows administrators to register students, enter marks, and generate
+                printable results efficiently.
+            </p>
+        </div>
+
+        <!-- ===== MODULE CARDS ===== -->
+        <div class="marks-grid">
+
+            <div class="card">
+                <h3>👨‍🎓 Add Student</h3>
+                <p>Register new students into Oracle database.</p>
+                <a href="/add-students.html" class="btn-primary">Go</a>
+            </div>
+
+            <div class="card">
+                <h3>📝 Add Marks</h3>
+                <p>Enter subject-wise marks for students.</p>
+                <a href="/add-marks.html" class="btn-primary">Go</a>
+            </div>
+
+            <div class="card">
+                <h3>📊 View Result</h3>
+                <p>View and print student results.</p>
+                <a href="/view-result.html" class="btn-primary">Go</a>
+            </div>
+
+        </div>
+
+        <!-- ===== TECHNOLOGY CARD ===== -->
+        <div class="info-card">
+            <h3>⚙ Technologies & Concepts Used</h3>
+            <ul>
+                <li><strong>Frontend:</strong> HTML, CSS, JavaScript</li>
+                <li><strong>Backend:</strong> Node.js, Express.js</li>
+                <li><strong>Database:</strong> SQL PLUS</li>
+                <li><strong>PL/SQL Concepts:</strong>
+                    <ul>
+                        <li>Stored Procedures</li>
+                        <li>PL/SQL Packages</li>
+                        <li>IN Parameters</li>
+                        <li>SQL DML Operations (INSERT, SELECT)</li>
+                        <li>Transaction Control (COMMIT)</li>
+                    </ul>
+                </li>
+                <li><strong>SQL Concepts:</strong> JOIN USING (ROLL), Primary Key, Foreign Key</li>
+            </ul>
+        </div>
+
+    </div>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer">
+        <p>Student Result Portal | DBMS Mini Project</p>
+    </footer>
+
+    <!-- ✅ SAFE JS (OPTIONAL) -->
+    <script src="script.js"></script>
+
+</body>
+
+</html>

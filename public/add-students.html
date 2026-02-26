@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Manage Students | Student Result Portal</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- ===== NAVBAR ===== -->
+    <nav class="navbar">
+        <div class="nav-title">🎓 Student Result Portal</div>
+        <div class="nav-links">
+            <a href="/index.html">Home</a>
+            <a href="/add-students.html" class="active">Students</a>
+            <a href="/add-marks.html">Marks</a>
+            <a href="/view-result.html">Results</a>
+        </div>
+    </nav>
+
+    <!-- ===== MAIN CONTAINER ===== -->
+    <div class="container">
+
+        <!-- ===== PAGE HEADER ===== -->
+        <div class="page-header">
+            <h1>Student Management</h1>
+            <p>Add and delete student records</p>
+        </div>
+
+        <!-- ===== INFO CARD ===== -->
+        <div class="info-card">
+            <h3>📘 Module Information</h3>
+            <ul>
+                <li><strong>Table Used:</strong> STUDENT</li>
+                <li><strong>Primary Key:</strong> ROLL</li>
+                <li><strong>PL/SQL Package:</strong> stud_pack</li>
+                <li><strong>Procedure:</strong> add_student</li>
+                <li><strong>Delete Logic:</strong> DELETE FROM STUDENT</li>
+            </ul>
+        </div>
+
+        <!-- ===== SUCCESS / ERROR MESSAGES ===== -->
+        <div id="successMsg" class="success-msg" style="display:none;"></div>
+        <div id="errorMsg" class="error-msg" style="display:none;"></div>
+
+        <!-- ===== ADD STUDENT ===== -->
+        <div class="card">
+            <h2>➕ Add Student</h2>
+
+            <form action="/add-student" method="POST">
+
+                <div class="form-group">
+                    <label>Roll Number</label>
+                    <input type="number" name="roll" required placeholder="Enter Roll Number">
+                </div>
+
+                <div class="form-group">
+                    <label>Student Name</label>
+                    <input type="text" name="name" required placeholder="Enter Student Name">
+                </div>
+
+                <div class="form-group">
+                    <label>Class</label>
+                    <select name="stud_class" required>
+                        <option value="">Select Class</option>
+                        <option>FYCS</option>
+                        <option>SYCS</option>
+                        <option>TYCS</option>
+                    </select>
+                </div>
+
+                <div class="form-actions">
+                    <button class="btn-primary">Add Student</button>
+                </div>
+            </form>
+        </div>
+
+        <!-- ===== DELETE STUDENT ===== -->
+        <div class="card">
+            <h2>❌ Delete Student</h2>
+
+            <form action="/delete-student" method="POST">
+
+                <div class="form-group">
+                    <label>Roll Number</label>
+                    <input type="number" name="roll" required placeholder="Enter Roll Number">
+                </div>
+
+                <div class="form-actions">
+                    <button class="btn-secondary"
+                        onclick="return confirm('Are you sure you want to delete this student?')">
+                        Delete Student
+                    </button>
+                </div>
+            </form>
+        </div>
+
+        <!-- ===== CONCEPT CARD ===== -->
+        <div class="concept-card">
+            <h3>🧠 Concepts Used</h3>
+            <ol>
+                <li>HTML Forms (POST Method)</li>
+                <li>PL/SQL Stored Procedures</li>
+                <li>Primary Key Constraint</li>
+                <li>Foreign Key Constraint</li>
+                <li>Referential Integrity</li>
+            </ol>
+        </div>
+
+    </div>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer">
+        <p>Student Result Portal | Node.js + Oracle (SQL*Plus)</p>
+    </footer>
+
+    <!-- ===== SUCCESS / ERROR HANDLING ===== -->
+    <script>
+        const p = new URLSearchParams(window.location.search);
+
+        if (p.get("success") === "1") {
+            successMsg.innerText = "✅ Student added successfully!";
+            successMsg.style.display = "block";
+        }
+
+        if (p.get("success") === "deleted") {
+            successMsg.innerText = "✅ Student deleted successfully!";
+            successMsg.style.display = "block";
+        }
+
+        if (p.get("error") === "exists") {
+            errorMsg.innerText = "❌ Student with this roll number already exists.";
+            errorMsg.style.display = "block";
+        }
+
+        if (p.get("error") === "notfound") {
+            errorMsg.innerText = "❌ Student not found.";
+            errorMsg.style.display = "block";
+        }
+
+        if (p.get("error") === "hasmarks") {
+            errorMsg.innerText = "❌ Cannot delete student. Marks already exist.";
+            errorMsg.style.display = "block";
+        }
+
+        if (p.get("error") === "failed") {
+            errorMsg.innerText = "❌ Operation failed. Please try again.";
+            errorMsg.style.display = "block";
+        }
+
+        // clean URL after message display
+        if (p.toString()) {
+            window.history.replaceState({}, document.title, window.location.pathname);
+        }
+    </script>
+
+    <!-- GLOBAL SCRIPT -->
+    <script src="script.js"></script>
+
+</body>
+
+</html>

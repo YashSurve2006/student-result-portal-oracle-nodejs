@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>View Result | Student Result Portal</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- ===== NAVBAR ===== -->
+    <nav class="navbar">
+        <div class="nav-title">🎓 Student Result Portal</div>
+        <div class="nav-links">
+            <a href="/index.html">Home</a>
+            <a href="/add-students.html">Students</a>
+            <a href="/add-marks.html">Marks</a>
+            <a href="/view-result.html" class="active">Results</a>
+        </div>
+    </nav>
+
+    <!-- ===== MAIN CONTAINER ===== -->
+    <div class="container">
+
+        <!-- ===== PAGE HEADER ===== -->
+        <div class="page-header">
+            <h1>View Student Result</h1>
+            <p>Search and print student examination result</p>
+        </div>
+
+        <!-- ===== INFO CARD ===== -->
+        <div class="info-card">
+            <h3>📘 Module Information</h3>
+            <ul>
+                <li><strong>Tables Used:</strong> STUDENT, MARKS</li>
+                <li><strong>Join:</strong> JOIN USING (ROLL)</li>
+                <li><strong>Backend API:</strong> GET /api/result/:roll</li>
+                <li><strong>Output:</strong> Result Card with Marks</li>
+            </ul>
+        </div>
+
+        <!-- ===== SEARCH FORM ===== -->
+        <div class="card">
+            <h2>Enter Roll Number</h2>
+
+            <form id="resultForm">
+                <div class="form-group">
+                    <label>Roll Number</label>
+                    <input type="number" id="rollInput" required placeholder="Enter Roll Number">
+                </div>
+
+                <div class="form-actions">
+                    <button class="btn-primary">Get Result</button>
+                </div>
+            </form>
+        </div>
+
+        <!-- ===== RESULT CARD ===== -->
+        <div class="result-card" id="resultCard" style="display:none">
+
+            <h2 class="center">🎓 Student Result</h2>
+
+            <!-- STUDENT INFO -->
+            <div class="student-info">
+                <p><strong>Roll No:</strong> <span id="resRoll"></span></p>
+                <p><strong>Name:</strong> <span id="resName"></span></p>
+                <p><strong>Class:</strong> <span id="resClass"></span></p>
+            </div>
+
+            <!-- MARKS TABLE -->
+            <table class="marks-table">
+                <tr>
+                    <th>Subject</th>
+                    <th>Marks</th>
+                </tr>
+                <tr>
+                    <td>Subject 1</td>
+                    <td id="m1"></td>
+                </tr>
+                <tr>
+                    <td>Subject 2</td>
+                    <td id="m2"></td>
+                </tr>
+                <tr>
+                    <td>Subject 3</td>
+                    <td id="m3"></td>
+                </tr>
+            </table>
+
+            <!-- RESULT SUMMARY -->
+            <div class="result-summary">
+                <p><strong>Total:</strong> <span id="total"></span></p>
+                <p><strong>Percentage:</strong> <span id="percent"></span>%</p>
+                <p><strong>Grade:</strong> <span id="gr"></span></p>
+            </div>
+
+            <!-- PRINT -->
+            <div class="form-actions no-print">
+                <button onclick="window.print()" class="btn-secondary">🖨 Print Result</button>
+            </div>
+
+        </div>
+
+        <!-- ===== CONCEPT CARD ===== -->
+        <div class="concept-card">
+            <h3>🧠 Concepts Used</h3>
+            <ol>
+                <li>REST API (GET)</li>
+                <li>Oracle JOIN USING</li>
+                <li>Dynamic UI Rendering (JavaScript)</li>
+                <li>Print Media Styling</li>
+            </ol>
+        </div>
+
+    </div>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer">
+        <p>Student Result Portal | Node.js + Oracle (SQL*Plus)</p>
+    </footer>
+
+    <!-- GLOBAL SCRIPT -->
+    <script src="script.js"></script>
+
+</body>
+
+</html>

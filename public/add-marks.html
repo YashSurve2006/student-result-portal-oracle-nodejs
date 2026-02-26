@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Add Marks | Student Result Portal</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- ===== NAVBAR ===== -->
+    <nav class="navbar">
+        <div class="nav-title">🎓 Student Result Portal</div>
+        <div class="nav-links">
+            <a href="/index.html">Home</a>
+            <a href="/add-students.html">Students</a>
+            <a href="/add-marks.html" class="active">Marks</a>
+            <a href="/view-result.html">Results</a>
+        </div>
+    </nav>
+
+    <!-- ===== MAIN CONTAINER ===== -->
+    <div class="container">
+
+        <!-- ===== PAGE HEADER ===== -->
+        <div class="page-header">
+            <h1>Add Student Marks</h1>
+            <p>Enter subject-wise marks for a student</p>
+        </div>
+
+        <!-- ===== INFO CARD ===== -->
+        <div class="info-card">
+            <h3>📘 Module Information</h3>
+            <ul>
+                <li><strong>Table Used:</strong> MARKS</li>
+                <li><strong>Primary Key:</strong> ROLL</li>
+                <li><strong>PL/SQL Package:</strong> stud_pack</li>
+                <li><strong>Procedure:</strong> add_marks</li>
+            </ul>
+        </div>
+
+        <!-- ===== SUCCESS / ERROR ===== -->
+        <div id="successMsg" class="success-msg" style="display:none;">
+            ✅ Marks added successfully!
+        </div>
+
+        <div id="errorMsg" class="error-msg" style="display:none;"></div>
+
+        <!-- ===== ADD MARKS FORM ===== -->
+        <div class="card">
+            <h2>📝 Enter Marks</h2>
+
+            <form action="/add-marks" method="POST">
+
+                <div class="form-group">
+                    <label>Roll Number</label>
+                    <input type="number" name="roll" required placeholder="Enter Roll Number">
+                </div>
+
+                <div class="marks-grid">
+                    <div class="form-group">
+                        <label>Subject 1</label>
+                        <input type="number" name="m1" min="0" max="100" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Subject 2</label>
+                        <input type="number" name="m2" min="0" max="100" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Subject 3</label>
+                        <input type="number" name="m3" min="0" max="100" required>
+                    </div>
+                </div>
+
+                <div class="form-actions">
+                    <button class="btn-primary">Add Marks</button>
+                </div>
+            </form>
+        </div>
+
+        <!-- ===== PREVIEW CARD (UI ONLY) ===== -->
+        <div class="concept-card">
+            <h3>🧠 Concepts Used</h3>
+            <ol>
+                <li>HTML Forms (POST)</li>
+                <li>PL/SQL Stored Procedure Call</li>
+                <li>Primary Key Constraint</li>
+                <li>Transaction Control (COMMIT)</li>
+                <li>Client-side Preview using JavaScript</li>
+            </ol>
+        </div>
+
+    </div>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer">
+        <p>Student Result Portal | Node.js + Oracle (SQL*Plus)</p>
+    </footer>
+
+    <!-- ===== SUCCESS / ERROR HANDLING SCRIPT ===== -->
+    <script>
+        const p = new URLSearchParams(window.location.search);
+
+        if (p.get("success") === "1") {
+            document.getElementById("successMsg").style.display = "block";
+        }
+
+        if (p.get("error") === "exists") {
+            errorMsg.innerText = "❌ Marks already added for this student.";
+            errorMsg.style.display = "block";
+        }
+
+        if (p.get("error") === "invalid") {
+            errorMsg.innerText = "❌ Invalid marks input. Please check values.";
+            errorMsg.style.display = "block";
+        }
+
+        // clean URL after showing message
+        if (p.toString()) {
+            window.history.replaceState({}, document.title, window.location.pathname);
+        }
+    </script>
+
+    <!-- GLOBAL SCRIPT -->
+    <script src="script.js"></script>
+
+</body>
+
+</html>
